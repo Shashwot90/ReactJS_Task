@@ -12,11 +12,27 @@ const App = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
 
-  
+  useEffect(() => {
+    // Retrieve data from local storage on component mount
+    const storedItems = localStorage.getItem('items');
+    if (storedItems) {
+      console.log('Retrieved items from local storage:', JSON.parse(storedItems));
+      setItems(JSON.parse(storedItems));
+    }else {
+      console.log('No items found in local storage.');
+    }
+  }, []);
+
+  const updateLocalStorage = (newItems) => {
+    console.log('Saving items to local storage:', newItems);
+    localStorage.setItem('items', JSON.stringify(newItems));
+  };
 
 
   const addItem = (item) => {
-    setItems([...items, { id: Date.now(), ...item }]);
+    const newItems = [...items, { id: Date.now(), ...item }];
+    setItems(newItems);
+    updateLocalStorage(newItems);
   };
 
 
@@ -24,18 +40,23 @@ const App = () => {
   const editItem = (item) => {
     setIsEditing(true);
     setCurrentItem(item);
+     
   };
 
 
 
   const updateItem = (id, updatedItem) => {
-    setItems(items.map((item) => (item.id === id ? { ...item, ...updatedItem } : item)));
+    const newItems = items.map((item) => (item.id === id ? { ...item, ...updatedItem } : item));
+    setItems(newItems);
     setIsEditing(false);
     setCurrentItem(null);
+    updateLocalStorage(newItems);
   };
 
   const deleteItem = (id) => {
-    setItems(items.filter((item) => item.id !== id));
+    const newItems = items.filter((item) => item.id !== id);
+    setItems(newItems);
+    updateLocalStorage(newItems);
   };
 
   const cancelEdit = () => {
