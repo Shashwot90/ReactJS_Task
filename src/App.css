@@ -135,3 +135,129 @@ button:hover,
   justify-content: center;
   margin-top: 20px;
 }
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-container,
+  .table-container {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .pagination {
+    flex-direction: column;
+  }
+
+  .pagination li {
+    margin-bottom: 10px;
+  }
+
+  .pagination li a {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    padding: 10px;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  form input,
+  form select,
+  form button {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  table th,
+  table td {
+    padding: 8px;
+  }
+
+  button,
+  .edit-button,
+  .delete-button,
+  .view-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .view-button-container {
+    margin-top: 10px;
+  }
+
+  .view-button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .form-container {
+    margin-right: 20px;
+  }
+
+  .table-container {
+    margin-left: 50px;
+  }
+
+  form {
+    padding: 25px;
+  }
+
+  table th,
+  table td {
+    padding: 15px;
+  }
+
+  .pagination {
+    margin-top: 30px;
+  }
+
+  .pagination li a {
+    padding: 12px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  .form-container {
+    margin-right: 40px;
+  }
+
+  .table-container {
+    margin-left: 140px;
+  }
+
+  form {
+    padding: 30px;
+  }
+
+  table th,
+  table td {
+    padding: 20px;
+  }
+
+  .pagination {
+    margin-top: 40px;
+  }
+
+  .pagination li a {
+    padding: 15px;
+  }
+}
